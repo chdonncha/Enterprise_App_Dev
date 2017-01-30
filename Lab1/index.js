@@ -1,14 +1,8 @@
-var massive=require("massive");
-var db = massive.connectSync({
+var Massive=require("massive");
+var db = Massive.connectSync({
 	connectionString: 'postgres://donncha:pass123@localhost/pgguide'
 });
 
-var newUser = {
-  email : "test@test.com",
-  first : "Joe",
-  last : "Test"
-};
-
-db.users.save(newUser, function(err,result){
-  console.log(result);  
+db.users.find(1, function(err,res){
+  console.log(res);
 });

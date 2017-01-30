@@ -1,0 +1,15 @@
+to access anything postgresql related the following must be added to the end:
+
+-U postgres
+
+password: pass123
+
+
+to access the psql terminal:
+
+psql -U postgres
+
+
+to do anything in the psql a \ but be applied first, e.g. to see the database:
+
+\dbname pgguide

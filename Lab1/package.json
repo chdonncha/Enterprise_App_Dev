@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.1",
-    "massive": "^2.5.0"
+    "massive": "^2.6.0"
   }
 }

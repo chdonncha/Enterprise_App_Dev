@@ -20,6 +20,35 @@ app.get('/users/:id', function (req, res) {
   })
 })
 
+app.get('/products', function (req, res) {
+  db.products.find({}, function (err, data) {
+    console.log(data)
+    res.send(data)
+  })
+})
+
+app.get('/products/:id', function (req, res) {
+  db.products.find({id: req.params.id}, function (err, data) {
+      console.log(data)
+    res.send(data)
+  })
+})
+
+app.get('/purchases', function (req, res) {
+  db.users.find({}, function (err, data) {
+    console.log(data)
+    res.send(data)
+  })
+})
+
+app.get('/purchases/:id', function (req, res) {
+  db.purchases.find({id: req.params.id}, function (err, data) {
+      console.log(data)
+    res.send(data)
+  })
+})
+
+
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })

@@ -6,30 +6,27 @@ var db = Massive.connectSync({
 
 var newUser = {
   email : "test@test.com",
-  first : "Joe",
-  last : "Test"
+  password : "Joe",
 };
 
-db.users.save(newUser, function(err,result){
-  console.log(result);  
-});
+var saved = db.users.saveSync(newUser);
+console.log(saved);
 
 db.users.find({email : "test@test.com"}, function(err,res){
   console.log(res);
 });
 
-/*
-db.users.saveSync({id: 1, email : "joe@test.com"});
-var joe = db.users.findSync(1);
+db.users.saveSync({id: 51, email : "test@test.com"});
+var joe = db.users.findSync(51);
 console.log(joe);
 
-var joe = db.users.saveSync({id: 1, email : "joe@test.com"});
+var joe = db.users.saveSync({id: 51, email : "joe@test.com"});
 console.log(joe);
 
-db.users.destroy({id: 1}, function(err,res){
+db.users.destroy({id: 51}, function(err,res){
   console.log(res);
 });
-*/
+
 
 /*
 console.log(db.users);

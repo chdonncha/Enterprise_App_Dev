@@ -1,24 +1,10 @@
-var Massive=require("massive");
-var db = Massive.connectSync({
-	connectionString: 'postgres://postgres:pass123@localhost/pgguide'
-});
+var express = require('express')
+var app = express()
 
-console.log(db.users);
-db.users.find({}, function(err,res){
-  console.log(res);
-});
+app.get('/', function (req, res) {
+  res.send('Hello World!')
+})
 
-console.log(db.products);
-db.products.find({}, function(err,res){
-  console.log(res);
-});
-
-console.log(db.purchases);
-db.purchases.find({}, function(err,res){
-  console.log(res);
-});
-
-console.log(db.purchase_items);
-db.purchase_items.find({}, function(err,res){
-  console.log(res);
-});
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!')
+})

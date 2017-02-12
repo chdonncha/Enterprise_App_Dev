@@ -13,3 +13,7 @@ psql -U postgres
 to do anything in the psql a \ but be applied first, e.g. to see the database:
 
 \dbname pgguide
+
+to start file using node:
+
+node <filename>

@@ -41,6 +41,8 @@ app.get('/purchases/:id', function (req, res) {
   })
 })
 
+//Basic Hackable version
+
 /*
 app.get('/products', function (req, res) {
   db.run(`select * from products where title='${req.query.name}'`, function(err, data){
@@ -49,8 +51,18 @@ app.get('/products', function (req, res) {
 })
 */
 
+//Parametertised version
+
+/*
 app.get('/products', function (req, res) {
   db.run(`select * from products where title=$1`, [req.query.name], function(err, data){
+    res.send(data);
+  })
+})
+*/
+
+app.get('/products', function (req, res) {
+  db.test_procedure(req.query.name, function(err, data){
     res.send(data);
   })
 })

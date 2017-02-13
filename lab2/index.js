@@ -61,6 +61,8 @@ app.get('/products', function (req, res) {
 })
 */
 
+//Stored Procedure Version
+
 app.get('/products', function (req, res) {
   db.test_procedure(req.query.name, function(err, data){
     res.send(data);

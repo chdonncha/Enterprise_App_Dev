@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.1",
-    "massive": "^2.6.0"
+    "massive": "^2.6.0",
+    "sequelize": "^3.30.2"
   }
 }

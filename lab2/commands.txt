@@ -5,3 +5,8 @@ products?name=';drop table test_table;--
 or
 
 http://localhost:3000/products?name=%27;drop%20table%20test_table;--
+
+
+install sequelize
+
+npm install --save sequelize

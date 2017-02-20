@@ -1,0 +1,35 @@
+-- installing sequelize
+
+# Use npm on the commandline:
+npm install sequelize
+
+// Then require the installed library in your application code:
+var Sequelize = require("sequelize")
+
+
+-- install pg
+
+npm install --save pg
+
+
+-- create new database
+
+CREATE DATABASE lab2;
+
+
+-- install migration tool
+
+npm install --save sequelize-cli
+
+npm install -g sequelize-cli
+
+
+-- init the sequelize directory
+
+sequelize init
+
+
+
+-- make database readable by sequelize
+
+sequelize addModel Judge id:serial name:string room:number ext:string

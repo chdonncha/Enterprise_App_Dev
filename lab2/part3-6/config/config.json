@@ -1,14 +1,23 @@
 {
   "development": {
-    "connectionString": "postgres://postgres:pass123@localhost/pgguide",
+    "database": "lab2",
+    "username": "postgres",
+    "password": "pass123",
+    "host": "localhost",
     "dialect": "postgres"
   },
   "test": {
-    "connectionString": "postgres://postgres:pass123@localhost/pgguide",
+    "database": "lab2",
+    "username": "postgres",
+    "password": "pass123",
+    "host": "localhost",
     "dialect": "postgres"
   },
   "production": {
-    "connectionString": "postgres://postgres:pass123@localhost/pgguide",
+    "database": "lab2",
+    "username": "postgres",
+    "password": "pass123",
+    "host": "localhost",
     "dialect": "postgres"
   }
 }

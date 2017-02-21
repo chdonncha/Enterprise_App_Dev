@@ -1,23 +1,21 @@
 {
-  "name": "lab1",
+  "name": "lab-2",
   "version": "1.0.0",
-  "description": "",
+  "description": "Lab 2",
   "main": "index.js",
   "scripts": {
-    "start": "index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "André Barata",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.16.1",
     "express": "^4.14.1",
-    "massive": "^2.6.0",
-    "pg": "^4.4.3",
+    "massive": "^2.5.0",
+    "pg": "^6.1.2",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^3.12.2",
-    "sequelize-cli": "^2.5.1"
-  },
-  "devDependencies": {
+    "sequelize": "^3.30.2",
     "sequelize-cli": "^2.5.1"
   }
 }

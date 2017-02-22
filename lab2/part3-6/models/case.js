@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
     claimant_id: DataTypes.INTEGER,
     respondent_id: DataTypes.INTEGER,
     start_date: DataTypes.DATE,
-    duration: DataTypes.INTERVAL,
+    duration: DataTypes.INTEGER,
     result: DataTypes.BOOLEAN
   }, {
     classMethods: {

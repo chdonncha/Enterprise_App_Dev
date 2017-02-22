@@ -17,3 +17,7 @@ to do anything in the psql a \ but be applied first, e.g. to see the database:
 to start file using node:
 
 node <filename>
+
+-- run files with:
+
+node index.js ( or name of file )

@@ -44,3 +44,6 @@ curl --data "name=john" http://127.0.0.1:3000/judges
 curl --data "number=1" http://127.0.0.1:3000/courtrooms
 
 sequelize model:create --name Todo --attributes "title:string, complete:boolean,UserId:integer"
+sequelize model:create --name User --attributes "email:string"
+
+curl --data "email=michael@mherman.org" http://localhost:3000/users

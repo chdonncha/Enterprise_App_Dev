@@ -25,19 +25,38 @@ var db = Massive.connectSync({
 //   }));
 // });
 
+// //establish connection with database
+// var db = Massive.connectSync({
+// 	connectionString: 'postgres://postgres:pass123@localhost/lab2'
+// });
 
-var models = require('./models/index');
+// var newJudge = {
+//   name : "john",
+// };
 
-app.post('/judge', function(req, res) {
-  models.Judge.create({
-    name: req.body.name
-  }).then(function(judge) {
-    res.json(judge);
-  });
-});
+// //save new user to database
+// var saved = db.judge.saveSync(newJudge);
+// console.log("\n \n create new judge: \n");
+// console.log(saved);
 
-app.post('/courtroom', function(req, res) {
-  models.Courtroom.create({
+// //find all details on the newly created user
+// db.judges.find({name : "john"}, function(err,res){
+//   console.log("\n \n find newly created judge: \n");
+//   console.log(res);
+// });
+
+// var models = require('./models/index');
+
+// app.post('/judges', function(req, res) {
+//   models.judges.create({
+//     name: req.body.name
+//   }).then(function(judges) {
+//     res.json(judges);
+//   });
+// });
+
+app.post('/courtrooms', function(req, res) {
+  app.Courtrooms.create({
     number: req.body.number
   }).then(function(courtroom) {
     res.json(courtroom);

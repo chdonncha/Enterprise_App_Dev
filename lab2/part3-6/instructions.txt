@@ -39,7 +39,8 @@ sequelize model:create --name Case --attributes "judge_id:integer, courtroom_id:
 
 sequelize db:migrate
 
-curl --data "name=john" http://127.0.0.1:3000/judge
+curl --data "name=john" http://127.0.0.1:3000/judges
 
+curl --data "number=1" http://127.0.0.1:3000/courtrooms
 
 sequelize model:create --name Todo --attributes "title:string, complete:boolean,UserId:integer"

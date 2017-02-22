@@ -35,11 +35,11 @@ sequelize init
 sequelize model:create --name Judge --attributes "id:integer, name:string, room:integer, ext:string"
 sequelize model:create --name Courtroom --attributes "id:integer, , number:string"
 sequelize model:create --name Participant --attributes "id:integer, , name:string, address:string, type:string"
-sequelize model:create --name Case --attributes "judge_id:integer, courtroom_id:integer, claimant_id:integer, respondent_id:integer, start_date:date, duration:interval, result:boolean"
+sequelize model:create --name Case --attributes "judge_id:integer, courtroom_id:integer, claimant_id:integer, respondent_id:integer, start_date:date, duration:integer, result:boolean"
 
 sequelize db:migrate
 
-curl --data "john" http://127.0.0.1:3000/judge
+curl --data "name=john" http://127.0.0.1:3000/judge
 
 
 sequelize model:create --name Todo --attributes "title:string, complete:boolean,UserId:integer"

@@ -36,6 +36,14 @@ app.post('/judge', function(req, res) {
   });
 });
 
+app.post('/courtroom', function(req, res) {
+  models.Courtroom.create({
+    number: req.body.number
+  }).then(function(courtroom) {
+    res.json(courtroom);
+  });
+});
+
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })

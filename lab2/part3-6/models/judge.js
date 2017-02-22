@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        Judge.hasMany(models.Case);
+        
       }
     }
   });

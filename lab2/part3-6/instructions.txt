@@ -52,6 +52,8 @@ sequelize model:create --name User --attributes "email:string"
 curl --data "email=michael@mherman.org" http://localhost:3000/users
 
 
+curl -X PUT --data "number=10" http://localhost:3000/courtroom/put/24
+
 create db (ubuntu):
 
 sudo -u postgres createdb lab2

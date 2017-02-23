@@ -1,7 +1,7 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Participant = sequelize.define('Participant', {
-    id: {
+    part_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true

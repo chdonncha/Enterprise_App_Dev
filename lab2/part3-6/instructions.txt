@@ -32,12 +32,15 @@ sequelize init
 
 -- make database readable by sequelize
 
-sequelize model:create --name Judge --attributes "id:integer, name:string, room:integer, ext:string"
-sequelize model:create --name Courtroom --attributes "id:integer, , number:string"
-sequelize model:create --name Participant --attributes "id:integer, , name:string, address:string, type:string"
-sequelize model:create --name Case --attributes "judge_id:integer, courtroom_id:integer, claimant_id:integer, respondent_id:integer, start_date:date, duration:integer, result:boolean"
+node_modules/.bin/sequelize model:create --name Judge --attributes "judge_id:integer, name:string, room:integer, ext:string"
 
-sequelize db:migrate
+node_modules/.bin/sequelize model:create --name Courtroom --attributes "court_id:integer, , number:string"
+
+node_modules/.bin/sequelize model:create --name Participant --attributes "part_id:integer, , name:string, address:string, type:string"
+
+node_modules/.bin/sequelize model:create --name Case --attributes "judge_id:integer, courtroom_id:integer, claimant_id:integer, respondent_id:integer, start_date:date, duration:integer, result:boolean"
+
+node_modules/.bin/sequelize db:migrate
 
 curl --data "number=6" http://127.0.0.1:3000/courtroom_post
 
@@ -47,3 +50,8 @@ sequelize model:create --name Todo --attributes "title:string, complete:boolean,
 sequelize model:create --name User --attributes "email:string"
 
 curl --data "email=michael@mherman.org" http://localhost:3000/users
+
+
+create db (ubuntu):
+
+sudo -u postgres createdb lab2

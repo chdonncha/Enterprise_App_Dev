@@ -1,6 +1,6 @@
 {
   "development": {
-    "database": "lab2",
+    "database": "lab2_1",
     "username": "donncha",
     "password": "pass123",
     "host": "localhost",

@@ -1,12 +1,13 @@
-'use strict';
-module.exports = function(sequelize, DataTypes) {
+var Sequelize = require('sequelize');
+var sequelize = new Sequelize('postgres://donncha:pass123@localhost/lab2_2');
+
   var Courtroom = sequelize.define('Courtroom', {
     court_id: {
-      type: DataTypes.INTEGER,
+      type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    number: DataTypes.STRING
+    number: Sequelize.STRING
   }, {
     classMethods: {
       associate: function(models) {
@@ -14,5 +15,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-  return Courtroom;
-};
+  
+  sequelize.sync().then(function () {
+
+});

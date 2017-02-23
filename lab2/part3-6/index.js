@@ -3,9 +3,11 @@ var express = require('express')
 var app = express();
 
 var Sequelize = require('sequelize');
-var sequelize = new Sequelize('postgres://postgres:pass123@localhost/lab2');
+var sequelize = new Sequelize('postgres://postgres:pass123@localhost/lab2_1');
 
 const models = require("./models");
+
+
 
 models.sequelize.sync()
 	.then(() => models.Courtroom.destroy({

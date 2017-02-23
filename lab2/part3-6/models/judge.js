@@ -1,7 +1,7 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Judge = sequelize.define('Judge', {
-    id: {
+    judge_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        
+        // associations can be defined here
       }
     }
   });

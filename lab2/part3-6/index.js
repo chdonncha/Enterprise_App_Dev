@@ -18,6 +18,20 @@ db.sequelize.sync()
 		{number: 4}
 	]))
 
+app.get('/courtroom', function(req, res) {
+  db.Courtroom.findAll({}).then(function(courtroom) {
+    res.json(courtroom);
+  });
+});
+
+app.post('/courtroom_post', function(req, res) {
+  db.Courtroom.findAll({
+    number: 6,
+  }).then(function(courtroom) {
+    res.json(courtroom);
+  });
+});
+
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')

@@ -1,10 +1,11 @@
 {
   "development": {
     "database": "lab2",
-    "username": "postgres",
+    "username": "donncha",
     "password": "pass123",
     "host": "localhost",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "port": "5433"
   },
   "test": {
     "database": "lab2",

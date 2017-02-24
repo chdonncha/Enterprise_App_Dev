@@ -2,31 +2,30 @@ var express = require('express')
 var app = express();
 
 var Sequelize = require('sequelize');
-var sequelize = new Sequelize('postgres://postgres:pass123@localhost/lab2_1');
+var sequelize = new Sequelize('postgres://postgres:pass123@localhost/lab2_3');
 
 const models = require("./models");
 
-// Populate model
-/*
 models.sequelize.sync()
 	.then(() => models.Courtroom.destroy({
 		where: {}
-	}))
+  }))
+
+
+// Populate model
+
+models.sequelize.sync()
 	.then(() => models.Courtroom.bulkCreate([
 		{number: 1},
 		{number: 2},
 		{number: 3},
 		{number: 4}
 	]))
-*/
+
 
 // Delete table
-/*
-models.sequelize.sync()
-	.then(() => models.Courtroom.destroy({
-		where: {}
-  }))
-*/
+
+
 
 app.get('/courtroom', function(req, res) {
   models.Courtroom.findAll({}).then(function(courtroom) {

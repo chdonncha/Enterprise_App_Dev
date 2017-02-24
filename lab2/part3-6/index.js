@@ -1,4 +1,3 @@
-// var Sequelize = require("sequelize")
 var express = require('express')
 var app = express();
 
@@ -7,9 +6,9 @@ var sequelize = new Sequelize('postgres://postgres:pass123@localhost/lab2_1');
 
 const models = require("./models");
 
-
-
-/*models.sequelize.sync()
+// Populate model
+/*
+models.sequelize.sync()
 	.then(() => models.Courtroom.destroy({
 		where: {}
 	}))
@@ -19,6 +18,14 @@ const models = require("./models");
 		{number: 3},
 		{number: 4}
 	]))
+*/
+
+// Delete table
+/*
+models.sequelize.sync()
+	.then(() => models.Courtroom.destroy({
+		where: {}
+  }))
 */
 
 app.get('/courtroom', function(req, res) {

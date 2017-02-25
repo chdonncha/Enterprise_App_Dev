@@ -1,16 +1,20 @@
+var Sequelize = require('sequelize');
+
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Courtroom = sequelize.define('Courtroom', {
     court_id: {
-      type: DataTypes.INTEGER,
+      type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    number: DataTypes.STRING
+    number: Sequelize.STRING
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        this.belongsTo(models.Case, {
+	        through: 'part_id'
+        });
       }
     }
   });

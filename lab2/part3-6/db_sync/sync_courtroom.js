@@ -26,12 +26,12 @@ sequelize
 
 // drop all tables in the db
 
-sequelize
-  .sync()
-  .then(function(){
-    // do some work
-  })
-  .then(function(){
-    return sequelize.drop() 
-  });
+// sequelize
+//   .sync()
+//   .then(function(){
+//     // do some work
+//   })
+//   .then(function(){
+//     return sequelize.drop() 
+//   });
 

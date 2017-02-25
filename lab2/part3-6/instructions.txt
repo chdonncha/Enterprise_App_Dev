@@ -55,7 +55,7 @@ Add data
 
 curl --data "name=BenFloyd&room_id=2&ext=test" http://localhost:3000/judge
 
-curl --data "court_id=10&number=12" http://localhost:3000/courtroom
+curl --data "&number=12" http://localhost:3000/courtroom
 
 curl --data "email=michael@mherman.org" http://localhost:3000/users
 

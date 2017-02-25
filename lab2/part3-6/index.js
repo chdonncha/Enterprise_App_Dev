@@ -15,12 +15,12 @@ const models = require("./models");
 // Courtroom
 //------------
 
-models.sequelize.sync()
+// models.sequelize.sync()
 // 	.then(() => models.Courtroom.destroy({
 // 		where: {}
 //   }))
 
-// // Populate model
+// Populate model
 // models.sequelize.sync()
 // 	.then(() => models.Courtroom.bulkCreate([
 // 		{number: 1},
@@ -38,7 +38,7 @@ models.sequelize.sync()
 // 		where: {}
 //   }))
 
-// // Populate model
+// Populate model
 // models.sequelize.sync()
 // 	.then(() => models.Judge.bulkCreate([
 // 		{name: 'John Doe', room: 20, ext: 'test'},
@@ -51,19 +51,19 @@ models.sequelize.sync()
 // // Participant
 // //-------------
 
-// models.sequelize.sync()
-// 	.then(() => models.Participant.destroy({
-// 		where: {}
-//   }))
+models.sequelize.sync()
+	.then(() => models.Participant.destroy({
+		where: {}
+  }))
 
-// // Populate model
-// models.sequelize.sync()
-// 	.then(() => models.Participant.bulkCreate([
-// 		{name: 'Breda Sullivan', address: '11 Deliford Heights', type: 'Jury'},
-// 		{name: 'James Connell', room: '207 Wayne Avenue', type: 'Clerk'},
-// 		{name: 'Richard Gilford', room: '36 Stilorgan Way', type: 'Clerk'},
-// 		{name: 'Maria Nocton', room: '57 Garfield Mews', type: 'Jury'}
-// 	]))
+// Populate model
+models.sequelize.sync()
+	.then(() => models.Participant.bulkCreate([
+		{name: 'Breda Sullivan', address: '11 Deliford Heights', type: 'Jury'},
+		{name: 'James Connell', room: '207 Wayne Avenue', type: 'Clerk'},
+		{name: 'Richard Gilford', room: '36 Stilorgan Way', type: 'Clerk'},
+		{name: 'Maria Nocton', room: '57 Garfield Mews', type: 'Jury'}
+	]))
 
 
 // // Case
@@ -74,14 +74,11 @@ models.sequelize.sync()
 // 		where: {}
 //   }))
 
-// Populate model
-models.sequelize.sync()
-	.then(() => models.Case.bulkCreate([
-		{judge_id: 2, courtroom_id: 2, claimant_id: 7, respondent_id: 3, start_date: '2015-11-05' , duration: 24, result: true },
-		{judge_id: 2, courtroom_id: 5, claimant_id: 5, respondent_id: 5, start_date: '2014-11-05' , duration: 24, result: true },
-		{judge_id: 5, courtroom_id: 5, claimant_id: 9, respondent_id: 7, start_date: '2012-11-05' , duration: 24, result: true },
-		{judge_id: 3, courtroom_id: 3, claimant_id: 2, respondent_id: 2, start_date: '2015-11-05' , duration: 24, result: true },
-	]))
+// models.sequelize.sync()
+// 	.then(() => models.Case.bulkCreate([
+// 		{judge_id: 2, courtroom_id: 22, claimant_id: 25, respondent_id: 26, start_date: '2015-11-05' , duration: 24, result: true },
+// 		{judge_id: 2, courtroom_id: 24, claimant_id: 27, respondent_id: 28, start_date: '2014-11-05' , duration: 24, result: true },
+// 	]))
 
 // // Find all rows
 // app.get('/case', function(req, res) {

@@ -12,7 +12,18 @@ var sequelize = new Sequelize('postgres://donncha:pass123@localhost:5433/lab2_4'
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        this.belongsTo(models.Judge, {
+            through: 'judge_id'
+        });
+         this.belongsTo(models.Courtroom, {
+            through: 'courtroom_id'
+        });
+         this.belongsTo(models.Participant, {
+            through: 'claimant_id'
+        });
+         this.belongsTo(models.Participant, {
+            through: 'respondent_id'
+        });
       }
     }
   });

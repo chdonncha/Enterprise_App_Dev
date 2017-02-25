@@ -2,18 +2,27 @@ var express = require('express')
 var app = express();
 
 var Sequelize = require('sequelize');
-var sequelize = new Sequelize('postgres://postgres:pass123@localhost/lab2_3');
+var sequelize = new Sequelize('postgres://postgres:pass123@localhost/lab2_4');
 
 const models = require("./models");
+
+
+
+
+//---------------------------------------------------------------
+// Populate or Drop Tables
+//---------------------------------------------------------------
+
+
+// Courtroom
+//------------
 
 models.sequelize.sync()
 	.then(() => models.Courtroom.destroy({
 		where: {}
   }))
 
-
 // Populate model
-
 models.sequelize.sync()
 	.then(() => models.Courtroom.bulkCreate([
 		{number: 1},
@@ -22,16 +31,45 @@ models.sequelize.sync()
 		{number: 4}
 	]))
 
-
-// Delete table
-
-
-
+// Find all rows
 app.get('/courtroom', function(req, res) {
   models.Courtroom.findAll({}).then(function(courtroom) {
     res.json(courtroom);
   });
 });
+
+
+// Judge
+//-------
+
+models.sequelize.sync()
+	.then(() => models.Judge.destroy({
+		where: {}
+  }))
+
+// Populate model
+models.sequelize.sync()
+	.then(() => models.Judge.bulkCreate([
+		{name: 'John Doe', room: 20, ext: 'test'},
+		{name: 'Bredan Byrne', room: 11, ext: 'test'},
+		{name: 'Ray Khoe', room: 9, ext: 'test'},
+		{name: 'Amanda Darcey', room: 36, ext: 'test'}
+	]))
+
+// Find all rows
+app.get('/judge', function(req, res) {
+  models.Judge.findAll({}).then(function(judge) {
+    res.json(judge);
+  });
+});
+
+
+//---------------------------------------------------------------
+// Routing
+//---------------------------------------------------------------
+
+// Courtroom
+//-----------
 
 app.post('/courtroom/post/:number', function(req, res) {
   models.Courtroom.findAll({
@@ -77,6 +115,60 @@ app.put('/courtroom/put/:id', function(req, res) {
         number: req.body.number
       }).then(function(courtroom) {
         res.send(courtroom);
+      });
+    }
+  });
+});
+
+
+// Judge
+//--------
+
+
+app.post('/courtroom/post/:number', function(req, res) {
+  models.Judge.findAll({
+    number: 6,
+  }).then(function(judge) {
+    res.json(judge);
+  });
+});
+
+// get single todo
+app.get('/judge/:id', function(req, res) {
+  models.Judge.find({
+    where: {
+      id: req.params.id
+    }
+  }).then(function(judge) {
+    res.json(judge);
+  });
+});
+
+
+// delete a single todo
+app.delete('/courtroom/delete/:id', function(req, res) {
+  models.Judge.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(function(judge) {
+    res.json(judge);
+  });
+});
+
+
+// update single todo
+app.put('/courtroom/put/:id', function(req, res) {
+  models.Judge.find({
+    where: {
+      id: req.params.id
+    }
+  }).then(function(judge) {
+    if(judge){
+      judge.updateAttributes({
+        number: req.body.number
+      }).then(function(judge) {
+        res.send(judge);
       });
     }
   });

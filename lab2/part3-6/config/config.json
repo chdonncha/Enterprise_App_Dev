@@ -1,6 +1,6 @@
 {
   "development": {
-    "database": "lab2",
+    "database": "lab2_4",
     "username": "donncha",
     "password": "pass123",
     "host": "localhost",
@@ -8,14 +8,14 @@
     "port": "5433"
   },
   "test": {
-    "database": "lab2",
+    "database": "lab2_4",
     "username": "postgres",
     "password": "pass123",
     "host": "localhost",
     "dialect": "postgres"
   },
   "production": {
-    "database": "lab2",
+    "database": "lab2_4",
     "username": "postgres",
     "password": "pass123",
     "host": "localhost",

@@ -1,5 +1,5 @@
 var Sequelize = require('sequelize');
-var sequelize = new Sequelize('postgres://donncha:pass123@localhost/lab2_2');
+var sequelize = new Sequelize('postgres://donncha:pass123@localhost:5433/lab2_4');
 
   var Courtroom = sequelize.define('Courtroom', {
     court_id: {
@@ -16,6 +16,22 @@ var sequelize = new Sequelize('postgres://donncha:pass123@localhost/lab2_2');
     }
   });
   
-  sequelize.sync().then(function () {
+// Create database
+sequelize
+  .sync()
+  .then(function(){
+    // do some work
+  });
 
-});
+
+// drop all tables in the db
+/*
+sequelize
+  .sync()
+  .then(function(){
+    // do some work
+  })
+  .then(function(){
+    return sequelize.drop() 
+  });
+*/

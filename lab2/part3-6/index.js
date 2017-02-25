@@ -33,19 +33,19 @@ const models = require("./models");
 // Judge
 //-------
 
-models.sequelize.sync()
-	.then(() => models.Judge.destroy({
-		where: {}
-  }))
+// models.sequelize.sync()
+// 	.then(() => models.Judge.destroy({
+// 		where: {}
+//   }))
 
-// Populate model
-models.sequelize.sync()
-	.then(() => models.Judge.bulkCreate([
-		{name: 'John Doe', room: 21, ext: 'test'},
-		{name: 'Bredan Byrne', room: 22, ext: 'test'},
-		{name: 'Ray Khoe', room: 24, ext: 'test'},
-		{name: 'Amanda Darcey', room: 23, ext: 'test'}
-	]))
+// // Populate model
+// models.sequelize.sync()
+// 	.then(() => models.Judge.bulkCreate([
+// 		{name: 'John Doe', room: 21, ext: 'test'},
+// 		{name: 'Bredan Byrne', room: 22, ext: 'test'},
+// 		{name: 'Ray Khoe', room: 24, ext: 'test'},
+// 		{name: 'Amanda Darcey', room: 23, ext: 'test'}
+// 	]))
 
 
 // // Participant
@@ -74,11 +74,11 @@ models.sequelize.sync()
 // 		where: {}
 //   }))
 
-models.sequelize.sync()
-	.then(() => models.Case.bulkCreate([
-		{judge_id: 2, courtroom_id: 22, claimant_id: 25, respondent_id: 26, start_date: '2015-11-05' , duration: 24, result: true },
-		{judge_id: 2, courtroom_id: 24, claimant_id: 27, respondent_id: 28, start_date: '2014-11-05' , duration: 24, result: true },
-	]))
+// models.sequelize.sync()
+// 	.then(() => models.Case.bulkCreate([
+// 		{judge_id: 2, courtroom_id: 22, claimant_id: 25, respondent_id: 26, start_date: '2015-11-05' , duration: 24, result: true },
+// 		{judge_id: 2, courtroom_id: 24, claimant_id: 27, respondent_id: 28, start_date: '2014-11-05' , duration: 24, result: true },
+// 	]))
 
 
 //---------------------------------------------------------------
@@ -117,7 +117,7 @@ app.get('/courtroom/:court_id', function(req, res) {
 
 
 // delete a single courtroom
-app.delete('/courtroom/delete/:court_id', function(req, res) {
+app.delete('/courtroom/:court_id', function(req, res) {
   models.Courtroom.destroy({
     where: {
       court_id: req.params.court_id
@@ -129,7 +129,7 @@ app.delete('/courtroom/delete/:court_id', function(req, res) {
 
 
 // update single courtroom
-app.put('/courtroom/put/:court_id', function(req, res) {
+app.put('/courtroom/:court_id', function(req, res) {
   models.Courtroom.find({
     where: {
       court_id: req.params.court_id
@@ -279,73 +279,73 @@ app.put('/participant/put/:part_id', function(req, res) {
 // Case
 //-------------
 
-// Find all rows
-app.get('/case', function(req, res) {
-  models.Case.findAll({}).then(function(court_case) {
-    res.json(court_case);
-  });
-});
+// // Find all rows
+// app.get('/case', function(req, res) {
+//   models.Case.findAll({}).then(function(court_case) {
+//     res.json(court_case);
+//   });
+// });
 
-app.post('/case/post/:number', function(req, res) {
-  models.Case.findAll({
-    judge_id: req.body.judge_id,
-    courtroom_id: req.body.courtroom_id,
-    claimant_id: req.body.claimant_id,
-    respondent_id: req.body.respondent_id,
-    start_date: req.body.start_date,
-    duration: req.body.duration,
-    result: req.body.result
-  }).then(function(court_case) {
-    res.json(court_case);
-  });
-});
+// app.post('/case/post/:number', function(req, res) {
+//   models.Case.findAll({
+//     judge_id: req.body.judge_id,
+//     courtroom_id: req.body.courtroom_id,
+//     claimant_id: req.body.claimant_id,
+//     respondent_id: req.body.respondent_id,
+//     start_date: req.body.start_date,
+//     duration: req.body.duration,
+//     result: req.body.result
+//   }).then(function(court_case) {
+//     res.json(court_case);
+//   });
+// });
 
-// get single todo
-app.get('/case/:id', function(req, res) {
-  models.Case.find({
-    where: {
-      id: req.params.id
-    }
-  }).then(function(court_case) {
-    res.json(court_case);
-  });
-});
-
-
-// delete a single todo
-app.delete('/case/delete/:id', function(req, res) {
-  models.Case.destroy({
-    where: {
-      id: req.params.id
-    }
-  }).then(function(court_case) {
-    res.json(court_case);
-  });
-});
+// // get single todo
+// app.get('/case/:id', function(req, res) {
+//   models.Case.find({
+//     where: {
+//       id: req.params.id
+//     }
+//   }).then(function(court_case) {
+//     res.json(court_case);
+//   });
+// });
 
 
-// update single todo
-app.put('/case/put/:id', function(req, res) {
-  models.Case.find({
-    where: {
-      id: req.params.id
-    }
-  }).then(function(court_case) {
-    if(court_case){
-      court_case.updateAttributes({
-        judge_id: req.body.judge_id,
-        courtroom_id: req.body.courtroom_id,
-        claimant_id: req.body.claimant_id,
-        respondent_id: req.body.respondent_id,
-        start_date: req.body.start_date,
-        duration: req.body.duration,
-        result: req.body.result
-      }).then(function(court_case) {
-        res.send(court_case);
-      });
-    }
-  });
-});
+// // delete a single todo
+// app.delete('/case/delete/:id', function(req, res) {
+//   models.Case.destroy({
+//     where: {
+//       id: req.params.id
+//     }
+//   }).then(function(court_case) {
+//     res.json(court_case);
+//   });
+// });
+
+
+// // update single todo
+// app.put('/case/put/:id', function(req, res) {
+//   models.Case.find({
+//     where: {
+//       id: req.params.id
+//     }
+//   }).then(function(court_case) {
+//     if(court_case){
+//       court_case.updateAttributes({
+//         judge_id: req.body.judge_id,
+//         courtroom_id: req.body.courtroom_id,
+//         claimant_id: req.body.claimant_id,
+//         respondent_id: req.body.respondent_id,
+//         start_date: req.body.start_date,
+//         duration: req.body.duration,
+//         result: req.body.result
+//       }).then(function(court_case) {
+//         res.send(court_case);
+//       });
+//     }
+//   });
+// });
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')

@@ -13,9 +13,7 @@ var sequelize = new Sequelize('postgres://donncha:pass123@localhost:5433/lab2_4'
   }, {
     classMethods: {
       associate: function(models) {
-        this.BelongsTo(models.Case, {
-	 through: 'part_id'
-        });
+        // do stuff
       }
     }
   });
@@ -29,11 +27,11 @@ sequelize
 
 // drop all tables in the db
 
-// sequelize
-//   .sync()
-//   .then(function(){
-//     // do some work
-//   })
-//   .then(function(){
-//     return sequelize.drop() 
-//   });
+sequelize
+  .sync()
+  .then(function(){
+    // do some work
+  })
+  .then(function(){
+    return sequelize.drop() 
+  });

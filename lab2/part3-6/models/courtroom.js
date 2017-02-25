@@ -12,9 +12,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        this.belongsTo(models.Case, {
-	        through: 'part_id'
-        });
+        // do stuff
       }
     }
   });

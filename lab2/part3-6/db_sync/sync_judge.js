@@ -13,7 +13,7 @@ var sequelize = new Sequelize('postgres://donncha:pass123@localhost:5433/lab2_4'
   }, {
     classMethods: {
       associate: function(models) {
-        this.BelongsTo(models.Courtroom, {
+        this.belongsTo(models.Courtroom, {
           through: 'room'
         });
       }

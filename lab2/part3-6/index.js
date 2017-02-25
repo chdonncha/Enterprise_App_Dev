@@ -15,7 +15,7 @@ const models = require("./models");
 // Courtroom
 //------------
 
-// models.sequelize.sync()
+models.sequelize.sync()
 // 	.then(() => models.Courtroom.destroy({
 // 		where: {}
 //   }))
@@ -30,8 +30,8 @@ const models = require("./models");
 // 	]))
 
 
-// Judge
-//-------
+// // Judge
+// //-------
 
 // models.sequelize.sync()
 // 	.then(() => models.Judge.destroy({
@@ -48,8 +48,8 @@ const models = require("./models");
 // 	]))
 
 
-// Participant
-//-------------
+// // Participant
+// //-------------
 
 // models.sequelize.sync()
 // 	.then(() => models.Participant.destroy({
@@ -66,22 +66,22 @@ const models = require("./models");
 // 	]))
 
 
-// Case
-//-------------
+// // Case
+// //-------------
 
 // models.sequelize.sync()
 // 	.then(() => models.Case.destroy({
 // 		where: {}
 //   }))
 
-// // Populate model
-// models.sequelize.sync()
-// 	.then(() => models.Case.bulkCreate([
-// 		{judge_id: 2, courtroom_id: 2, claimant_id: 7, respondent_id: 3, start_date: '2015-11-05' , duration: 24, result: true },
-// 		{judge_id: 2, courtroom_id: 5, claimant_id: 5, respondent_id: 5, start_date: '2014-11-05' , duration: 24, result: true },
-// 		{judge_id: 5, courtroom_id: 5, claimant_id: 9, respondent_id: 7, start_date: '2012-11-05' , duration: 24, result: true },
-// 		{judge_id: 3, courtroom_id: 3, claimant_id: 2, respondent_id: 2, start_date: '2015-11-05' , duration: 24, result: true },
-// 	]))
+// Populate model
+models.sequelize.sync()
+	.then(() => models.Case.bulkCreate([
+		{judge_id: 2, courtroom_id: 2, claimant_id: 7, respondent_id: 3, start_date: '2015-11-05' , duration: 24, result: true },
+		{judge_id: 2, courtroom_id: 5, claimant_id: 5, respondent_id: 5, start_date: '2014-11-05' , duration: 24, result: true },
+		{judge_id: 5, courtroom_id: 5, claimant_id: 9, respondent_id: 7, start_date: '2012-11-05' , duration: 24, result: true },
+		{judge_id: 3, courtroom_id: 3, claimant_id: 2, respondent_id: 2, start_date: '2015-11-05' , duration: 24, result: true },
+	]))
 
 // // Find all rows
 // app.get('/case', function(req, res) {

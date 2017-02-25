@@ -30,40 +30,40 @@ const models = require("./models");
 // 	]))
 
 
-// // Judge
-// //-------
-
-// models.sequelize.sync()
-// 	.then(() => models.Judge.destroy({
-// 		where: {}
-//   }))
-
-// Populate model
-// models.sequelize.sync()
-// 	.then(() => models.Judge.bulkCreate([
-// 		{name: 'John Doe', room: 20, ext: 'test'},
-// 		{name: 'Bredan Byrne', room: 11, ext: 'test'},
-// 		{name: 'Ray Khoe', room: 9, ext: 'test'},
-// 		{name: 'Amanda Darcey', room: 36, ext: 'test'}
-// 	]))
-
-
-// // Participant
-// //-------------
+// Judge
+//-------
 
 models.sequelize.sync()
-	.then(() => models.Participant.destroy({
+	.then(() => models.Judge.destroy({
 		where: {}
   }))
 
 // Populate model
 models.sequelize.sync()
-	.then(() => models.Participant.bulkCreate([
-		{name: 'Breda Sullivan', address: '11 Deliford Heights', type: 'Jury'},
-		{name: 'James Connell', room: '207 Wayne Avenue', type: 'Clerk'},
-		{name: 'Richard Gilford', room: '36 Stilorgan Way', type: 'Clerk'},
-		{name: 'Maria Nocton', room: '57 Garfield Mews', type: 'Jury'}
+	.then(() => models.Judge.bulkCreate([
+		{name: 'John Doe', room: 21, ext: 'test'},
+		{name: 'Bredan Byrne', room: 22, ext: 'test'},
+		{name: 'Ray Khoe', room: 24, ext: 'test'},
+		{name: 'Amanda Darcey', room: 23, ext: 'test'}
 	]))
+
+
+// // Participant
+// //-------------
+
+// models.sequelize.sync()
+// 	.then(() => models.Participant.destroy({
+// 		where: {}
+//   }))
+
+// // Populate model
+// models.sequelize.sync()
+// 	.then(() => models.Participant.bulkCreate([
+// 		{name: 'Breda Sullivan', address: '11 Deliford Heights', type: 'Jury'},
+// 		{name: 'James Connell', room: '207 Wayne Avenue', type: 'Clerk'},
+// 		{name: 'Richard Gilford', room: '36 Stilorgan Way', type: 'Clerk'},
+// 		{name: 'Maria Nocton', room: '57 Garfield Mews', type: 'Jury'}
+// 	]))
 
 
 // // Case
@@ -74,18 +74,11 @@ models.sequelize.sync()
 // 		where: {}
 //   }))
 
-// models.sequelize.sync()
-// 	.then(() => models.Case.bulkCreate([
-// 		{judge_id: 2, courtroom_id: 22, claimant_id: 25, respondent_id: 26, start_date: '2015-11-05' , duration: 24, result: true },
-// 		{judge_id: 2, courtroom_id: 24, claimant_id: 27, respondent_id: 28, start_date: '2014-11-05' , duration: 24, result: true },
-// 	]))
-
-// // Find all rows
-// app.get('/case', function(req, res) {
-//   models.Case.findAll({}).then(function(court_case) {
-//     res.json(court_case);
-//   });
-// });
+models.sequelize.sync()
+	.then(() => models.Case.bulkCreate([
+		{judge_id: 2, courtroom_id: 22, claimant_id: 25, respondent_id: 26, start_date: '2015-11-05' , duration: 24, result: true },
+		{judge_id: 2, courtroom_id: 24, claimant_id: 27, respondent_id: 28, start_date: '2014-11-05' , duration: 24, result: true },
+	]))
 
 
 //---------------------------------------------------------------
@@ -208,7 +201,9 @@ app.put('/judge/put/:judge_id', function(req, res) {
   }).then(function(judge) {
     if(judge){
       judge.updateAttributes({
-        number: req.body.number
+        name: req.body.name,
+        room: req.body.room,
+        ext: req.body.ext
       }).then(function(judge) {
         res.send(judge);
       });
@@ -227,9 +222,11 @@ app.get('/participant', function(req, res) {
   });
 });
 
-app.post('/participant/post/:number', function(req, res) {
+app.post('/participant', function(req, res) {
   models.Participant.findAll({
-    number: 6,
+    name: req.body.name,
+    address: req.body.address,
+    type: req.body.type
   }).then(function(participant) {
     res.json(participant);
   });
@@ -268,7 +265,9 @@ app.put('/participant/put/:part_id', function(req, res) {
   }).then(function(participant) {
     if(participant){
       participant.updateAttributes({
-        number: req.body.number
+        name: req.body.name,
+        address: req.body.address,
+        type: req.body.type
       }).then(function(participant) {
         res.send(participant);
       });
@@ -280,55 +279,73 @@ app.put('/participant/put/:part_id', function(req, res) {
 // Case
 //-------------
 
+// Find all rows
+app.get('/case', function(req, res) {
+  models.Case.findAll({}).then(function(court_case) {
+    res.json(court_case);
+  });
+});
 
-// app.post('/case/post/:number', function(req, res) {
-//   models.Case.findAll({
-//     number: 6,
-//   }).then(function(court_case) {
-//     res.json(court_case);
-//   });
-// });
+app.post('/case/post/:number', function(req, res) {
+  models.Case.findAll({
+    judge_id: req.body.judge_id,
+    courtroom_id: req.body.courtroom_id,
+    claimant_id: req.body.claimant_id,
+    respondent_id: req.body.respondent_id,
+    start_date: req.body.start_date,
+    duration: req.body.duration,
+    result: req.body.result
+  }).then(function(court_case) {
+    res.json(court_case);
+  });
+});
 
-// // get single todo
-// app.get('/case/:id', function(req, res) {
-//   models.Case.find({
-//     where: {
-//       id: req.params.id
-//     }
-//   }).then(function(court_case) {
-//     res.json(court_case);
-//   });
-// });
-
-
-// // delete a single todo
-// app.delete('/case/delete/:id', function(req, res) {
-//   models.Case.destroy({
-//     where: {
-//       id: req.params.id
-//     }
-//   }).then(function(court_case) {
-//     res.json(court_case);
-//   });
-// });
+// get single todo
+app.get('/case/:id', function(req, res) {
+  models.Case.find({
+    where: {
+      id: req.params.id
+    }
+  }).then(function(court_case) {
+    res.json(court_case);
+  });
+});
 
 
-// // update single todo
-// app.put('/case/put/:id', function(req, res) {
-//   models.Case.find({
-//     where: {
-//       id: req.params.id
-//     }
-//   }).then(function(court_case) {
-//     if(court_case){
-//       court_case.updateAttributes({
-//         number: req.body.number
-//       }).then(function(court_case) {
-//         res.send(court_case);
-//       });
-//     }
-//   });
-// });
+// delete a single todo
+app.delete('/case/delete/:id', function(req, res) {
+  models.Case.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(function(court_case) {
+    res.json(court_case);
+  });
+});
+
+
+// update single todo
+app.put('/case/put/:id', function(req, res) {
+  models.Case.find({
+    where: {
+      id: req.params.id
+    }
+  }).then(function(court_case) {
+    if(court_case){
+      court_case.updateAttributes({
+        judge_id: req.body.judge_id,
+        courtroom_id: req.body.courtroom_id,
+        claimant_id: req.body.claimant_id,
+        respondent_id: req.body.respondent_id,
+        start_date: req.body.start_date,
+        duration: req.body.duration,
+        result: req.body.result
+      }).then(function(court_case) {
+        res.send(court_case);
+      });
+    }
+  });
+});
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')

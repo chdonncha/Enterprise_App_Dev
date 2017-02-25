@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
             through: 'judge_id'
         });
          this.belongsTo(models.Courtroom, {
-            through: 'courtroom_id'
+            through: 'court_id'
         });
          this.belongsTo(models.Participant, {
             through: 'claimant_id'

@@ -6,7 +6,7 @@ var sequelize = new Sequelize('postgres://donncha:pass123@localhost:5433/lab2_4'
       type: Sequelize.INTEGER,
       primaryKey: true,
       references: {
-        model: 'judges',
+        model: 'Judges',
         key: 'judge_id'
       }
     },
@@ -14,7 +14,7 @@ var sequelize = new Sequelize('postgres://donncha:pass123@localhost:5433/lab2_4'
       type: Sequelize.INTEGER,
       primaryKey: true,
       references: {
-        model: 'courtrooms',
+        model: 'Courtrooms',
         key: 'court_id'
       }
     },
@@ -22,7 +22,7 @@ var sequelize = new Sequelize('postgres://donncha:pass123@localhost:5433/lab2_4'
       type: Sequelize.INTEGER,
       primaryKey: true,
       references: {
-        model: 'participants',
+        model: 'Participants',
         key: 'part_id'
       }
     },
@@ -30,7 +30,7 @@ var sequelize = new Sequelize('postgres://donncha:pass123@localhost:5433/lab2_4'
       type: Sequelize.INTEGER,
       primaryKey: true,
       references: {
-        model: 'participants',
+        model: 'Participants',
         key: 'part_id'
       }
     },

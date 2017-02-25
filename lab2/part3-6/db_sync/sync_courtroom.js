@@ -11,7 +11,9 @@ var sequelize = new Sequelize('postgres://donncha:pass123@localhost:5433/lab2_4'
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        this.BelongsTo(models.Case, {
+	        through: 'part_id'
+        });
       }
     }
   });

@@ -15,6 +15,7 @@ var sequelize = new Sequelize('postgres://donncha:pass123@localhost:5433/lab2_4'
       associate: function(models) {
         this.BelongsTo(models.Case, {
 	 through: 'part_id'
+        });
       }
     }
   });
@@ -25,3 +26,14 @@ sequelize
   .then(function(){
     // do some work
   });
+
+// drop all tables in the db
+
+// sequelize
+//   .sync()
+//   .then(function(){
+//     // do some work
+//   })
+//   .then(function(){
+//     return sequelize.drop() 
+//   });

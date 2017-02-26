@@ -185,7 +185,7 @@ app.get('/judge/:id', function(req, res) {
 
 
 // delete a single judge
-app.delete('/judge/delete/:id', function(req, res) {
+app.delete('/judge/:id', function(req, res) {
   models.Judge.destroy({
     where: {
       id: req.params.id
@@ -197,7 +197,7 @@ app.delete('/judge/delete/:id', function(req, res) {
 
 
 // update single judge
-app.put('/judge/put/:id', function(req, res) {
+app.put('/judge/:id', function(req, res) {
   models.Judge.find({
     where: {
       id: req.params.id
@@ -250,7 +250,7 @@ app.get('/participant/:id', function(req, res) {
 
 
 // delete a single participant
-app.delete('/participant/delete/:id', function(req, res) {
+app.delete('/participant/:id', function(req, res) {
   models.Participant.destroy({
     where: {
       id: req.params.id
@@ -262,7 +262,7 @@ app.delete('/participant/delete/:id', function(req, res) {
 
 
 // update single participant
-app.put('/participant/put/:id', function(req, res) {
+app.put('/participant/:id', function(req, res) {
   models.Participant.find({
     where: {
       id: req.params.id
@@ -292,7 +292,7 @@ app.get('/case', function(req, res) {
 });
 
 // post new case
-app.post('/case/', function(req, res) {
+app.post('/case', function(req, res) {
   models.Case.findAll({
     judge_id: req.body.judge_id,
     courtroom_id: req.body.courtroom_id,
@@ -319,7 +319,7 @@ app.get('/case/:id', function(req, res) {
 
 
 // delete a single case
-app.delete('/case/delete/:id', function(req, res) {
+app.delete('/case/:id', function(req, res) {
   models.Case.destroy({
     where: {
       id: req.params.id
@@ -331,7 +331,7 @@ app.delete('/case/delete/:id', function(req, res) {
 
 
 // update single case
-app.put('/case/put/:id', function(req, res) {
+app.put('/case/:id', function(req, res) {
   models.Case.find({
     where: {
       id: req.params.id

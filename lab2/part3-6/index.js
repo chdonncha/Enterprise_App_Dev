@@ -293,7 +293,7 @@ app.get('/case', function(req, res) {
 
 // post new case
 app.post('/case', function(req, res) {
-  models.Case.findAll({
+  models.Case.create({
     judge_id: req.body.judge_id,
     courtroom_id: req.body.courtroom_id,
     claimant_id: req.body.claimant_id,

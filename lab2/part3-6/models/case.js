@@ -30,7 +30,7 @@ module.exports = function(sequelize, DataTypes) {
     validate: {
       hasAssociation: function(next) {
         checkRoom(function(ok) {
-          sequelize.models.Case.start_date
+
           if (ok) {
             next()
           } else {

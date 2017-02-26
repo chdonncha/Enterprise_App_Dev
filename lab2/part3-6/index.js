@@ -160,7 +160,7 @@ app.get('/judge', function(req, res) {
   });
 });
 
-// add new judge
+// post new judge
 app.post('/judge', function(req, res) {
   models.Judge.create({
     name: req.body.name,
@@ -226,6 +226,7 @@ app.get('/participant', function(req, res) {
   });
 });
 
+// post new participant
 app.post('/participant', function(req, res) {
   models.Participant.findAll({
     name: req.body.name,
@@ -236,7 +237,7 @@ app.post('/participant', function(req, res) {
   });
 });
 
-// get single todo
+// get single participant
 app.get('/participant/:id', function(req, res) {
   models.Participant.find({
     where: {
@@ -248,7 +249,7 @@ app.get('/participant/:id', function(req, res) {
 });
 
 
-// delete a single todo
+// delete a single participant
 app.delete('/participant/delete/:id', function(req, res) {
   models.Participant.destroy({
     where: {
@@ -260,7 +261,7 @@ app.delete('/participant/delete/:id', function(req, res) {
 });
 
 
-// update single todo
+// update single participant
 app.put('/participant/put/:id', function(req, res) {
   models.Participant.find({
     where: {
@@ -283,14 +284,15 @@ app.put('/participant/put/:id', function(req, res) {
 // Case
 //-------------
 
-// Find all rows
+// get all rows
 app.get('/case', function(req, res) {
   models.Case.findAll({}).then(function(court_case) {
     res.json(court_case);
   });
 });
 
-app.post('/case/post/:number', function(req, res) {
+// post new case
+app.post('/case/', function(req, res) {
   models.Case.findAll({
     judge_id: req.body.judge_id,
     courtroom_id: req.body.courtroom_id,
@@ -304,7 +306,7 @@ app.post('/case/post/:number', function(req, res) {
   });
 });
 
-// get single todo
+// get single case
 app.get('/case/:id', function(req, res) {
   models.Case.find({
     where: {
@@ -316,7 +318,7 @@ app.get('/case/:id', function(req, res) {
 });
 
 
-// delete a single todo
+// delete a single case
 app.delete('/case/delete/:id', function(req, res) {
   models.Case.destroy({
     where: {
@@ -328,7 +330,7 @@ app.delete('/case/delete/:id', function(req, res) {
 });
 
 
-// update single todo
+// update single case
 app.put('/case/put/:id', function(req, res) {
   models.Case.find({
     where: {

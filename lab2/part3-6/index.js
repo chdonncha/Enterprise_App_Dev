@@ -6,6 +6,10 @@ var sequelize = new Sequelize('postgres://postgres:pass123@localhost/lab2_4');
 
 const models = require("./models");
 
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({extended: true}));
+
 
 //---------------------------------------------------------------
 // Populate or Drop Tables

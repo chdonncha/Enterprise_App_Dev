@@ -50,19 +50,43 @@ sequelize model:create --name Todo --attributes "title:string, complete:boolean,
 sequelize model:create --name User --attributes "email:string"
 
 
+---------
 Add data
 ---------
 
-curl --data "name=BenFloyd&room_id=2&ext=test" http://localhost:3000/judge
+POST
+---------
 
 curl --data "number=12" http://localhost:3000/courtroom
 
+curl --data "name=BenFloyd&room_id=2&ext=test" http://localhost:3000/judge
 
-curl --data "email=michael@mherman.org" http://localhost:3000/users
+curl --data "name=Brenda Haughy&address=Kilknock Hill&type=clark" http://localhost:3000/participant
 
 curl --data "judge_id=1&courtroom_id=21&claimant_id=23&respondent_id=25&start_date=2016-11-05&duration=100000&result=true" http://localhost:3000/case
 
-curl -X PUT --data "number=10" http://localhost:3000/courtroom/put/24
+
+PUT
+---------
+
+curl -X PUT --data "number=10" http://localhost:3000/courtroom/2
+
+curl -X PUT --data "name=William Truman&room_id=2&ext=test" http://localhost:3000/judge/1
+
+curl -X PUT "name=Maria Bernardo&address=KilTool Heights&type=clark" http://localhost:3000/participant/2
+
+curl -X PUT "judge_id=3&courtroom_id=22&claimant_id=22&respondent_id=24&start_date=2015-11-05&duration=12000&result=true" http://localhost:3000/case/2
+
+DELETE
+---------
+
+curl -X DELETE http://localhost:3000/courtroom/1
+
+curl -X DELETE http://localhost:3000/judge/2
+
+curl -X DELETE http://localhost:3000/participant/1
+
+curl -X DELETE http://localhost:3000/case/3
 
 create db (ubuntu):
 

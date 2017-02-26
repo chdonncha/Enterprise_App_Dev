@@ -228,7 +228,7 @@ app.get('/participant', function(req, res) {
 
 // post new participant
 app.post('/participant', function(req, res) {
-  models.Participant.findAll({
+  models.Participant.create({
     name: req.body.name,
     address: req.body.address,
     type: req.body.type

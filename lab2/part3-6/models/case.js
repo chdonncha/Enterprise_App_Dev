@@ -30,13 +30,23 @@ module.exports = function(sequelize, DataTypes) {
     validate: {
       hasAssociation: function(next) {
         checkRoom(function(ok) {
-
-          if (ok) {
-            next()
-          } else {
-            next('Error')
+          sequelize.models.Case.findAll().then(function(data) {
+            for(var i in data) {
+              if(i.start_date < insertData.start_date < i.start_date + duration || insertData.start_date + duration > i.start_date) {
+                if(i.room == insertData.room) {
+                ok = false; 
+                break;
+              }
+            }
           }
-        })
+          if (ok) {
+            next();
+          } else {
+            next('Error');
+          }
+        }, function() {
+          next('No room');
+        });
       }
     }
   });

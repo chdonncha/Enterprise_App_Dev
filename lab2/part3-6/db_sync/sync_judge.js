@@ -2,7 +2,7 @@ var Sequelize = require('sequelize');
 var sequelize = new Sequelize('postgres://donncha:pass123@localhost:5433/lab2_4');
 
   var Judge = sequelize.define('Judge', {
-    judge_id: {
+    id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true

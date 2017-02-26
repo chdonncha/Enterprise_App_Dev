@@ -3,7 +3,7 @@ var Sequelize = require('sequelize');
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Courtroom = sequelize.define('Courtroom', {
-    court_id: {
+    id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true

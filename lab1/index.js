@@ -3,7 +3,7 @@ var app = express();
 
 var Massive=require("massive");
 var db = Massive.connectSync({
-	connectionString: 'postgres://postgres:pass123@localhost/pgguide'
+	connectionString: 'postgres://donncha:pass123@localhost/pgguide'
 });
 
 app.get('/users', function (req, res) {

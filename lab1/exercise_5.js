@@ -21,18 +21,18 @@ db.users.find({email : "test@test.com"}, function(err,res){
   console.log(res);
 });
 
-db.users.saveSync({id: 68, email : "test@test.com"});
-var joe = db.users.findSync(68);
+db.users.saveSync({id: 71, email : "test@test.com"});
+var joe = db.users.findSync(71);
 console.log("\n \n save sync user: \n" );
 console.log(joe);
 
 //alter the newly created user with the following email
-var joe = db.users.saveSync({id: 68, email : "joe@test.com"});
+var joe = db.users.saveSync({id: 71, email : "joe@test.com"});
 console.log("\n \n alter user jo: \n" + joe);
 console.log(joe);
 
 //delete the new user from the database
-db.users.destroy({id: 68}, function(err,res){
+db.users.destroy({id: 71}, function(err,res){
   console.log("\n \n user destroyed: \n");
   console.log(res);
 });

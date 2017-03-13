@@ -84,6 +84,21 @@ app.use(bodyParser.urlencoded({extended: true}));
 // 		{judge_id: 2, courtroom_id: 24, claimant_id: 27, respondent_id: 28, start_date: '2014-11-05' , duration: 24, result: true },
 // 	]))
 
+// User
+// ------------
+
+// models.sequelize.sync()
+// 	.then(() => models.User.destroy({
+// 		where: {}
+//   }))
+
+// Populate model
+// models.sequelize.sync()
+// 	.then(() => models.User.bulkCreate([
+// 		{username: "donncha", hashed_password: "password"},
+//     {username: "tester", hashed_password: "test"},
+// 	]))
+
 
 //---------------------------------------------------------------
 // Routing
@@ -357,3 +372,8 @@ models.sequelize.sync()
 	.then(() => app.listen(3000, function () {
 		console.log('Example app listening on port 3000!')
 	}));
+
+models.sequelize.sync()
+	.then(() => models.User.create(
+		{username: "donncha", hashed_password: "password"}
+	))

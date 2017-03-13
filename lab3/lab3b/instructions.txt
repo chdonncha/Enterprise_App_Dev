@@ -91,3 +91,11 @@ curl -X DELETE http://localhost:3000/case/3
 create db (ubuntu):
 
 sudo -u postgres createdb lab2
+
+
+Lab 3b
+------
+
+for encryption access postgres db in terminal:
+
+create extension pgcrypto

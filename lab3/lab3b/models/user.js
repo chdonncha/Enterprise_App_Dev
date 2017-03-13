@@ -7,17 +7,28 @@ module.exports = function(sequelize, DataTypes) {
     },
     hashed_password: {
       type: DataTypes.STRING,
-      required: true,
-      set(val) {
-        sequelize.query("select crypt(:hashed_password, gen_salt('md5'))", {
-          replacements: {
-          hashed_password: val
-          },
-        type: Sequelize.QueryTypes.SELECT
+      required: true
+    }
+  },
+  {
+    hooks: {
+      beforeCreate(user) {
+      return sequelize.query("select crypt(:hashed_password, gen_salt('md5'))", {
+        replacements: {
+        hashed_password: user.hashed_password
+        },
+        type: sequelize.QueryTypes.SELECT
         })
-        .then((hashed_password) => {
-          this.setDataValue('hashed_password', hashed_password)
-        });
+      .then((hashed_password) => {
+        console.log(hashed_password);
+        user.hashed_password = hashed_password[0].crypt;
+        //this.setDataValue('hashed_password', hashed_password)
+      });
+      }
+    },
+    classMethod: {
+      associate: function(models) {
+        //test
       }
     }
   });

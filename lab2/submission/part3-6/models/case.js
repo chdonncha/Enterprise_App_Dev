@@ -28,7 +28,13 @@ module.exports = function(sequelize, DataTypes) {
   },
   {
     validate: {
+
+    // check if the room is taken, comparing the duration of start time, to the one
+    // being inserted. If the time overlaps with the duration of the same room
+    // then it means the case cannot be booked to that room at that time.
+
       hasAssociation: function(next) {
+	var insertData = this;
         checkRoom(function(ok) {
           sequelize.models.Case.findAll().then(function(data) {
             for(var i in data) {
@@ -42,10 +48,10 @@ module.exports = function(sequelize, DataTypes) {
           if (ok) {
             next();
           } else {
-            next('Error');
+            next('Error no room available');
           }
         }, function() {
-          next('No room');
+          next('No room available');
           });
         });
       checkroom();

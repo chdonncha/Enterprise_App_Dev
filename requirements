@@ -1,0 +1,8 @@
+modules required:
+
+django-extensions
+django-geojson
+django-leaflet
+djangorestframework
+djangorestframework-gis
+geojson

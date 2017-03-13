@@ -90,4 +90,13 @@ curl -X DELETE http://localhost:3000/case/3
 
 create db (ubuntu):
 
+
+
+login to superuser:
+
+sudo -u postgres psql wmapdb
+
+
+create db:
+
 sudo -u postgres createdb lab2

@@ -1,0 +1,93 @@
+-- installing sequelize
+
+# Use npm on the commandline:
+npm install sequelize
+
+// Then require the installed library in your application code:
+var Sequelize = require("sequelize")
+
+
+-- install pg
+
+npm install --save pg
+
+
+-- create new database
+
+CREATE DATABASE lab2;
+
+
+-- install migration tool
+
+npm install --save sequelize-cli
+
+npm install -g sequelize-cli
+
+
+-- init the sequelize directory
+
+sequelize init
+
+
+
+-- make database readable by sequelize
+
+node_modules/.bin/sequelize model:create --name Judge --attributes "judge_id:integer, name:string, room:integer, ext:string"
+
+node_modules/.bin/sequelize model:create --name Courtroom --attributes "court_id:integer, number:string"
+
+node_modules/.bin/sequelize model:create --name Participant --attributes "part_id:integer, name:string, address:string, type:string"
+
+node_modules/.bin/sequelize model:create --name Case --attributes "judge_id:integer, courtroom_id:integer, claimant_id:integer, respondent_id:integer, start_date:date, duration:integer, result:boolean"
+
+node_modules/.bin/sequelize db:migrate
+
+curl --data "number=6" http://127.0.0.1:3000/courtroom_post
+
+curl --data "number=1" http://127.0.0.1:3000/courtrooms
+
+sequelize model:create --name Todo --attributes "title:string, complete:boolean,UserId:integer"
+sequelize model:create --name User --attributes "email:string"
+
+
+---------
+Add data
+---------
+
+POST
+---------
+
+curl --data "number=12" http://localhost:3000/courtroom
+
+curl --data "name=BenFloyd&room_id=2&ext=test" http://localhost:3000/judge
+
+curl --data "name=Brenda Haughy&address=Kilknock Hill&type=clark" http://localhost:3000/participant
+
+curl --data "judge_id=1&courtroom_id=21&claimant_id=23&respondent_id=25&start_date=2016-11-05&duration=100000&result=true" http://localhost:3000/case
+
+
+PUT
+---------
+
+curl -X PUT --data "number=10" http://localhost:3000/courtroom/2
+
+curl -X PUT --data "name=William Truman&room_id=2&ext=test" http://localhost:3000/judge/1
+
+curl -X PUT "name=Maria Bernardo&address=KilTool Heights&type=clark" http://localhost:3000/participant/2
+
+curl -X PUT "judge_id=3&courtroom_id=22&claimant_id=22&respondent_id=24&start_date=2015-11-05&duration=12000&result=true" http://localhost:3000/case/2
+
+DELETE
+---------
+
+curl -X DELETE http://localhost:3000/courtroom/1
+
+curl -X DELETE http://localhost:3000/judge/2
+
+curl -X DELETE http://localhost:3000/participant/1
+
+curl -X DELETE http://localhost:3000/case/3
+
+create db (ubuntu):
+
+sudo -u postgres createdb lab2

@@ -1,7 +1,7 @@
 {
   "development": {
     "database": "lab2_4",
-    "username": "postgres",
+    "username": "donncha",
     "password": "pass123",
     "host": "localhost",
     "dialect": "postgres",
@@ -9,14 +9,14 @@
   },
   "test": {
     "database": "lab2_4",
-    "username": "postgres",
+    "username": "donncha",
     "password": "pass123",
     "host": "localhost",
     "dialect": "postgres"
   },
   "production": {
     "database": "lab2_4",
-    "username": "postgres",
+    "username": "donncha",
     "password": "pass123",
     "host": "localhost",
     "dialect": "postgres"

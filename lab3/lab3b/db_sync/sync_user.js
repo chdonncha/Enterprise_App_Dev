@@ -1,17 +1,17 @@
 var Sequelize = require('sequelize');
 var sequelize = new Sequelize('postgres://donncha:pass123@localhost:5433/lab2_4');
 
-  var Judge = sequelize.define('User', {
+  var User = sequelize.define('User', {
     username: {
-      type: Sequelize.String,
+      type: Sequelize.STRING,
       primaryKey: true
     },
     hashed_password: {
         type: Sequelize.STRING,
         required: true
     }
-  }, {
-  });
+  }
+);
 
 
 // Create database

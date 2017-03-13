@@ -6,8 +6,7 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     hashed_password: {
-      type: DataTypes.STRING,
-      required: true
+      type: DataTypes.STRING
     }
   },
   {

@@ -373,7 +373,14 @@ models.sequelize.sync()
 		console.log('Example app listening on port 3000!')
 	}));
 
-models.sequelize.sync()
-	.then(() => models.User.create(
-		{username: "donncha", hashed_password: "password"}
-	))
+// models.sequelize.sync()
+// 	.then(() => models.User.create(
+// 		{username: "donncha", hashed_password: "password"}
+// 	))
+
+  models.sequelize.sync()
+	.then(() => models.User.bulkCreate([
+		{username: "JohnDoe", hashed_password: "123"},
+    {username: "Mr_Bean", hashed_password: "qwerty"},
+    {username: "GooSanders", hashed_password: "567"}
+	]))

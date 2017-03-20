@@ -104,6 +104,16 @@ app.use(bodyParser.urlencoded({extended: true}));
 // Authentication
 //---------------------------------------------------------------
 
+function authsplit(val) {
+  let res;
+  
+  if(res = val.match(/Bearer (.*)/)) {
+    return res[1];
+  } else {
+    return false;
+  }
+}
+
 app.post('/authentication', function(req, res) {
   models.User.find({where: {
     username: req.body.username,
@@ -336,6 +346,9 @@ app.get('/case', function(req, res) {
 
 // post new case
 app.post('/case', function(req, res) {
+
+let authentication = 
+
   models.Case.create({
     judge_id: req.body.judge_id,
     courtroom_id: req.body.courtroom_id,

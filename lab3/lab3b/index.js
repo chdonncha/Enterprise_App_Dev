@@ -5,6 +5,7 @@ var app = express();
 //var sequelize = new Sequelize('postgres://postgres:pass123@localhost/lab2_4');
 
 const models = require("./models");
+const jwt = require('jsonwebtoken');
 
 var bodyParser = require('body-parser');
 
@@ -98,6 +99,33 @@ app.use(bodyParser.urlencoded({extended: true}));
 // 		{username: "donncha", hashed_password: "password"},
 //     {username: "tester", hashed_password: "test"},
 // 	]))
+
+//---------------------------------------------------------------
+// Authentication
+//---------------------------------------------------------------
+
+app.post('/authentication', function(req, res) {
+  models.User.find({where: {
+    username: req.body.username,
+    hashed_password: models.sequelize.fn('crypt',
+          req.body.hashed_password,
+          models.sequelize.col('hashed_password')
+    )
+  }})
+  .then(function(result) {
+    if(result) {
+      let result = {
+        valid: true,
+        token: jwt.sign(tokenData, privateKey)
+      }
+      return res.json(result);
+    }
+    return res.json({
+      valid: false,
+      message: "failed to authenticate user"
+    })
+  })
+})
 
 
 //---------------------------------------------------------------

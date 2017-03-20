@@ -5,6 +5,7 @@ var Sequelize = require('sequelize');
 var sequelize = new Sequelize('postgres://postgres:pass123@localhost/lab2_4');
 
 const models = require("./models");
+const jwt = require('jsonwebtoken');
 
 var bodyParser = require('body-parser');
 

@@ -105,7 +105,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 //---------------------------------------------------------------
 
 function authsplit(val) {
-  let res;
+  var res;
   
   if(res = val.match(/Bearer (.*)/)) {
     return res[1];
@@ -124,9 +124,12 @@ app.post('/authentication', function(req, res) {
   }})
   .then(function(result) {
     if(result) {
-      let result = {
+      var result = {
         valid: true,
-        token: jwt.sign(tokenData, privateKey)
+        token: jwt.sign({
+          username: result.username
+        }, 'pass123', { expiresIn: 60 * 60}
+        )
       }
       return res.json(result);
     }
@@ -136,6 +139,18 @@ app.post('/authentication', function(req, res) {
     })
   })
 })
+
+function isAuthentication(val) {
+  var token;
+
+  try{
+  token = jwt.verify(val,'pass123');
+  } catch(err) {
+    return false;
+  }
+
+  return token;
+}
 
 
 //---------------------------------------------------------------
@@ -154,6 +169,16 @@ app.get('/courtroom', function(req, res) {
 
 // post new courtroom
 app.post('/courtroom', function(req, res) {
+
+  var authentication = authsplit(req.get('Authentication'));
+
+  if(!isAuthentication) {
+    return res.status('401').send( {
+      valid: false,
+      message: "invalid token!"
+    })
+  }
+
   models.Courtroom.create({
     number : req.body.number
   }).then(function(courtroom) {
@@ -346,9 +371,6 @@ app.get('/case', function(req, res) {
 
 // post new case
 app.post('/case', function(req, res) {
-
-let authentication = 
-
   models.Case.create({
     judge_id: req.body.judge_id,
     courtroom_id: req.body.courtroom_id,
@@ -419,9 +441,9 @@ models.sequelize.sync()
 // 		{username: "donncha", hashed_password: "password"}
 // 	))
 
-  models.sequelize.sync()
-	.then(() => models.User.bulkCreate([
-		{username: "JohnDoe", hashed_password: "123"},
-    {username: "Mr_Bean", hashed_password: "qwerty"},
-    {username: "GooSanders", hashed_password: "567"}
-	]))
+  // models.sequelize.sync()
+	// .then(() => models.User.bulkCreate([
+	// 	{username: "JohnDoe", hashed_password: "123"},
+  //   {username: "Mr_Bean", hashed_password: "qwerty"},
+  //   {username: "GooSanders", hashed_password: "567"}
+	// ]))

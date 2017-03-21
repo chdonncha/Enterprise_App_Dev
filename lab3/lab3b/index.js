@@ -110,6 +110,8 @@ function authsplit(val) {
   if(res = val.match(/Bearer (.*)/)) {
     return res[1];
   } else {
+    console.log(val);
+    console.log(res);
     return false;
   }
 }
@@ -169,7 +171,8 @@ app.get('/courtroom', function(req, res) {
 
 // post new courtroom
 app.post('/courtroom', function(req, res) {
-  var authentication = authsplit(req.get('Authentication') || '');
+  var authentication = authsplit(req.get('Authorization') || '');
+  console.log(authentication);
 
   if(!isAuthentication(authentication)) {
     return res.status('401').send( {
@@ -199,7 +202,7 @@ app.get('/courtroom/:id', function(req, res) {
 
 // delete a single courtroom
 app.delete('/courtroom/:id', function(req, res) {
-  var authentication = authsplit(req.get('Authentication') || '');
+  var authentication = authsplit(req.get('Authorization') || '');
 
   if(!isAuthentication(authentication)) {
     return res.status('401').send( {
@@ -220,7 +223,7 @@ app.delete('/courtroom/:id', function(req, res) {
 
 // update single courtroom
 app.put('/courtroom/:id', function(req, res) {
-  var authentication = authsplit(req.get('Authentication') || '');
+  var authentication = authsplit(req.get('Authorization') || '');
 
   if(!isAuthentication(authentication)) {
     return res.status('401').send( {
@@ -257,7 +260,7 @@ app.get('/judge', function(req, res) {
 
 // post new judge
 app.post('/judge', function(req, res) {
-  var authentication = authsplit(req.get('Authentication') || '');
+  var authentication = authsplit(req.get('Authorization') || '');
 
   if(!isAuthentication(authentication)) {
     return res.status('401').send( {
@@ -290,7 +293,7 @@ app.get('/judge/:id', function(req, res) {
 
 // delete a single judge
 app.delete('/judge/:id', function(req, res) {
-  var authentication = authsplit(req.get('Authentication') || '');
+  var authentication = authsplit(req.get('Authorization') || '');
 
   if(!isAuthentication(authentication)) {
     return res.status('401').send( {
@@ -311,7 +314,7 @@ app.delete('/judge/:id', function(req, res) {
 
 // update single judge
 app.put('/judge/:id', function(req, res) {
-  var authentication = authsplit(req.get('Authentication') || '');
+  var authentication = authsplit(req.get('Authorization') || '');
 
   if(!isAuthentication(authentication)) {
     return res.status('401').send( {
@@ -350,7 +353,7 @@ app.get('/participant', function(req, res) {
 
 // post new participant
 app.post('/participant', function(req, res) {
-  var authentication = authsplit(req.get('Authentication') || '');
+  var authentication = authsplit(req.get('Authorization') || '');
 
   if(!isAuthentication(authentication)) {
     return res.status('401').send( {
@@ -382,7 +385,7 @@ app.get('/participant/:id', function(req, res) {
 
 // delete a single participant
 app.delete('/participant/:id', function(req, res) {
-  var authentication = authsplit(req.get('Authentication') || '');
+  var authentication = authsplit(req.get('Authorization') || '');
 
   if(!isAuthentication(authentication)) {
     return res.status('401').send( {
@@ -403,7 +406,7 @@ app.delete('/participant/:id', function(req, res) {
 
 // update single participant
 app.put('/participant/:id', function(req, res) {
-  var authentication = authsplit(req.get('Authentication') || '');
+  var authentication = authsplit(req.get('Authorization') || '');
 
   if(!isAuthentication(authentication)) {
     return res.status('401').send( {
@@ -442,7 +445,7 @@ app.get('/case', function(req, res) {
 
 // post new case
 app.post('/case', function(req, res) {
-  var authentication = authsplit(req.get('Authentication') || '');
+  var authentication = authsplit(req.get('Authorization') || '');
 
   if(!isAuthentication(authentication)) {
     return res.status('401').send( {
@@ -477,7 +480,7 @@ app.get('/case/:id', function(req, res) {
 
 // delete a single case
 app.delete('/case/:id', function(req, res) {
-  var authentication = authsplit(req.get('Authentication') || '');
+  var authentication = authsplit(req.get('Authorization') || '');
 
   if(!isAuthentication(authentication)) {
     return res.status('401').send( {
@@ -497,7 +500,7 @@ app.delete('/case/:id', function(req, res) {
 
 // update single case
 app.put('/case/:id', function(req, res) {
-  var authentication = authsplit(req.get('Authentication') || '');
+  var authentication = authsplit(req.get('Authorization') || '');
 
   if(!isAuthentication(authentication)) {
     return res.status('401').send( {

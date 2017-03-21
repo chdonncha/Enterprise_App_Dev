@@ -99,3 +99,22 @@ Lab 3b
 for encryption access postgres db in terminal:
 
 create extension pgcrypto
+
+
+Post Man
+--------
+
+Retrieve token with:
+
+localhost:3000/authentication
+
+and body of valid:
+
+username
+hashed_password
+
+
+pass token in with header:
+
+Authorization
+

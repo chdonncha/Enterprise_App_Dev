@@ -19,14 +19,6 @@ var sequelize = new Sequelize('postgres://donncha:pass123@localhost:5433/lab2_4'
   }
 );
 
-
-  accessKey: {
-    type: DataTypes.CHAR(160)
-  },
-  secretKey: {
-    TYPE: DataTypes.CHAR(320)
-  }
-
 // Create database
 sequelize
   .sync()

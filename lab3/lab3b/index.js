@@ -170,9 +170,9 @@ app.get('/courtroom', function(req, res) {
 // post new courtroom
 app.post('/courtroom', function(req, res) {
 
-  var authentication = authsplit(req.get('Authentication'));
+  var authentication = authsplit(req.get('Authentication') || '');
 
-  if(!isAuthentication) {
+  if(!isAuthentication(authentication)) {
     return res.status('401').send( {
       valid: false,
       message: "invalid token!"

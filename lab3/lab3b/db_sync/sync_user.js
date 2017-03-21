@@ -9,10 +9,23 @@ var sequelize = new Sequelize('postgres://donncha:pass123@localhost:5433/lab2_4'
     hashed_password: {
         type: Sequelize.STRING,
         required: true
+    },
+    accessKey: {
+      type: Sequelize.CHAR(160)
+    },
+    secretKey: {
+      type: Sequelize.CHAR(320)
     }
   }
 );
 
+
+  accessKey: {
+    type: DataTypes.CHAR(160)
+  },
+  secretKey: {
+    TYPE: DataTypes.CHAR(320)
+  }
 
 // Create database
 sequelize

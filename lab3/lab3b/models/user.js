@@ -17,6 +17,12 @@ module.exports = function(sequelize, DataTypes) {
         )
       );
     }
+  },
+  accessKey: {
+    type: DataTypes.CHAR(160)
+  },
+  secretKey: {
+    type: DataTypes.CHAR(320)
   }
 }, 
 {
